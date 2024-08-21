@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Fly me to the moon</title>
+  <!-- 引入外部的CSS样式文件 -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- 页面主要内容开始 -->
+  <div id="scene" class="stars-wrapper">
+    <!-- 背景层1，深度为0.00，不会跟随鼠标移动 -->
+    <div data-depth="0.00" class="layer"></div>
+
+    <!-- 星星簇层2，深度为0.30，随着鼠标移动而缓慢移动 -->
+    <div data-depth="0.30" class="stars-cluster stars-cluster-1 layer">
+      <div class="star star-1"></div>
+      <div class="star star-2"></div>
+      <div class="star star-3"></div>
+      <div class="star star-4"></div>
+      <div class="star star-5"></div>
+      <div class="star star-6"></div>
+      <div class="star star-7"></div>
+      <div class="star star-8"></div>
+      <div class="star star-9"></div>
+      <div class="star star-10"></div>
+      <div class="star star-11"></div>
+      <div class="star star-12"></div>
+      <div class="star star-13"></div>
+      <div class="star star-14"></div>
+      <div class="star star-15"></div>
+      <div class="star star-16"></div>
+      <div class="star star-17"></div>
+      <div class="star star-18"></div>
+      <div class="star star-19"></div>
+      <div class="star star-20"></div>
+      <div class="star star-21"></div>
+      <div class="star star-22"></div>
+      <div class="star star-23"></div>
+      <div class="star star-24"></div>
+      <div class="star star-25"></div>
+      <div class="star star-26"></div>
+      <div class="star star-27"></div>
+      <div class="star star-28"></div>
+      <div class="star star-29"></div>
+      <div class="star star-30"></div>
+      <div class="star star-31"></div>
+      <div class="star star-32"></div>
+      <div class="star star-33"></div>
+      <div class="star star-34"></div>
+      <div class="star star-35"></div>
+      <div class="star star-36"></div>
+      <div class="star star-37"></div>
+      <div class="star star-38"></div>
+      <div class="star star-39"></div>
+      <div class="star star-40"></div>
+    </div>
+
+    <!-- 星星簇层3，深度为0.50，移动速度快于层2 -->
+    <div data-depth="0.50" class="stars-cluster stars-cluster-2 layer">
+      <div class="star star-1"></div>
+      <div class="star star-2"></div>
+      <div class="star star-3"></div>
+      <div class="star star-4"></div>
+      <div class="star star-5"></div>
+      <div class="star star-6"></div>
+      <div class="star star-7"></div>
+      <div class="star star-8"></div>
+      <div class="star star-9"></div>
+      <div class="star star-10"></div>
+      <div class="star star-11"></div>
+      <div class="star star-12"></div>
+      <div class="star star-13"></div>
+      <div class="star star-14"></div>
+      <div class="star star-15"></div>
+      <div class="star star-16"></div>
+      <div class="star star-17"></div>
+      <div class="star star-18"></div>
+      <div class="star star-19"></div>
+      <div class="star star-20"></div>
+      <div class="star star-21"></div>
+      <div class="star star-22"></div>
+      <div class="star star-23"></div>
+      <div class="star star-24"></div>
+      <div class="star star-25"></div>
+      <div class="star star-26"></div>
+      <div class="star star-27"></div>
+      <div class="star star-28"></div>
+      <div class="star star-29"></div>
+      <div class="star star-30"></div>
+      <div class="star star-31"></div>
+      <div class="star star-32"></div>
+      <div class="star star-33"></div>
+      <div class="star star-34"></div>
+      <div class="star star-35"></div>
+      <div class="star star-36"></div>
+      <div class="star star-37"></div>
+      <div class="star star-38"></div>
+      <div class="star star-39"></div>
+      <div class="star star-40"></div>
+    </div>
+
+    <!-- 星星簇层4，深度为0.90，移动速度最快 -->
+    <div data-depth="0.90" class="stars-cluster stars-cluster-3 layer">
+      <div class="star star-1"></div>
+      <div class="star star-2"></div>
+      <div class="star star-3"></div>
+      <div class="star star-4"></div>
+      <div class="star star-5"></div>
+      <div class="star star-6"></div>
+      <div class="star star-7"></div>
+      <div class="star star-8"></div>
+      <div class="star star-9"></div>
+      <div class="star star-10"></div>
+      <div class="star star-11"></div>
+      <div class="star star-12"></div>
+      <div class="star star-13"></div>
+      <div class="star star-14"></div>
+      <div class="star star-15"></div>
+    </div>
+
+    <!-- 月亮层，深度为0.30，跟随鼠标移动 -->
+    <div data-depth="0.30" class="moon-wrapper layer">
+      <div class="moon"></div>
+    </div>
+
+    <!-- 标题层，深度为0.40，跟随鼠标移动 -->
+    <div data-depth="0.40" class="title-wrapper layer">
+      <a href="/Fly.html">
+        <h1 data-title="Fly me to the moon" class="title">Fly me to the moon</h1>
+      </a>
+    </div>
+
+    <!-- 背景音乐，自动播放，循环播放 -->
+    <audio id="bgmMusic" src="/Src/Angry Birds Star Wars.mp3" autoplay="autoplay" loop="loop" preload="auto" type="audio/mpeg"></audio>
+  </div>
+  <!-- 页面主要内容结束 -->
+
+  <!-- 引入jQuery库 -->
+  <script src='js/jquery.min.js'></script>
+  
+  <!-- 鼠标点击特效脚本 -->
+  <script type="text/javascript"> 
+    var a_idx = 0; 
+    jQuery(document).ready(function($) { 
+        $("body").click(function(e) { 
+            var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治", "爱国", "敬业", "诚信", "友善"); 
+            var $i = $("<span/>").text(a[a_idx]); 
+            a_idx = (a_idx + 1) % a.length; 
+            var x = e.pageX, 
+            y = e.pageY; 
+            $i.css({ 
+                "z-index": 999, 
+                "top": y - 20, 
+                "left": x, 
+                "position": "absolute", 
+                "font-weight": "bold", 
+                "color": "#ff6651" 
+            }); 
+            $("body").append($i); 
+            $i.animate({ 
+                "top": y - 180, 
+                "opacity": 0 
+            }, 
+            1500, 
+            function() { 
+                $i.remove(); 
+            }); 
+        }); 
+    }); 
+  </script>
+
+  <!-- 引入parallax.js库，用于实现视差滚动效果 -->
+  <script src='js/jquery.parallax.js'></script>
+
+  <!-- 引入自定义脚本 -->
+  <script src="js/index.js"></script>
+
+  <!-- 初始化parallax.js效果 -->
+  <script>
+    $(document).ready(function(){
+      $('#scene').parallax();
+    });
+  </script>
+</body>
+</html>
