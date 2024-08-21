@@ -74,7 +74,7 @@ body {
   top: 33vh;
   left: 24vw;
   border-radius: 50%;
-  background: #e7e1df url('../src/images/moon.png') 50% 50% no-repeat;
+  background: #e7e1df url('../img/moon.png') 50% 50% no-repeat;
   background-size: 102%;
   box-shadow: 0px 0px 80px 0px rgba(183, 176, 130, 0.6), 0px 0px 350px 0px rgba(222, 221, 215, 0.3);
 }
