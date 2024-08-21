@@ -32,12 +32,13 @@ body, html {
     background-color: rgba(0, 0, 0, 0.5); /* 半透明黑色背景，增加文本的可读性 */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* 描述容器的阴影效果 */
     z-index: 1000; /* 描述容器的层级高于其他内容 */
-    transition: transform 0.3s ease; /* 描述容器的放大动画 */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* 添加过渡效果 */
 }
 
-/* 描述容器悬浮时放大5% */
+/* 描述容器悬浮时放大5%并添加金色光晕效果 */
 .description:hover {
     transform: translateX(-50%) scale(1.05); /* 鼠标悬浮时放大5% */
+    box-shadow: 0 0 15px 5px rgba(255, 215, 0, 0.8); /* 发光金色光晕效果 */
 }
 
 /* 描述容器中的段落样式 */
