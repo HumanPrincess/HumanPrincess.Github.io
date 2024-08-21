@@ -25,20 +25,20 @@ body, html {
     position: fixed; /* 固定定位，确保描述层在视口的固定位置 */
     bottom: 0; /* 底部距离视口底部0px */
     left: 50%; /* 水平居中对齐，通过左侧50%位置实现 */
-    transform: translateX(-50%); /* 使用CSS transform水平居中对齐 */
+    transform: translateX(-50%) translateZ(0); /* 使用CSS transform水平居中对齐，并触发GPU加速 */
     width: 80%; /* 描述容器宽度设置为视口宽度的80% */
     max-width: 100%; /* 最大宽度为视口宽度 */
     padding: 10px; /* 描述容器的内边距 */
     background-color: rgba(0, 0, 0, 0.5); /* 半透明黑色背景，增加文本的可读性 */
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.8); /* 黑色光晕效果 */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* 描述容器的阴影效果 */
     z-index: 1000; /* 描述容器的层级高于其他内容 */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* 添加过渡效果 */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* 描述容器的放大动画和平滑阴影过渡 */
 }
 
-/* 描述容器悬浮时放大5%并添加金色光晕效果 */
+/* 描述容器悬浮时放大5% */
 .description:hover {
-    transform: translateX(-50%) scale(1.05); /* 鼠标悬浮时放大5% */
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.8); /* 发光金色光晕和黑色光晕效果 */
+    transform: translateX(-50%) scale(1.05) translateZ(0); /* 鼠标悬浮时放大5%，并触发GPU加速 */
+    box-shadow: 0 0 20px 5px rgba(255, 215, 0, 0.8); /* 悬浮时的金色光晕效果 */
 }
 
 /* 描述容器中的段落样式 */
