@@ -4,13 +4,14 @@ body, html {
     margin: 0; /* 移除浏览器默认的外边距 */
     padding: 0; /* 移除浏览器默认的内边距 */
     font-family: '楷体', SimSun, 'Times New Roman', Times, serif; /* 设置字体 */
+    overflow: hidden; /* 隐藏滚动条 */
 }
 
 /* 背景图片容器样式 */
 .background-image {
     background-position: center; /* 背景图片在容器中居中显示 */
     background-repeat: no-repeat; /* 背景图片不重复显示 */
-    background-size: cover; /* 背景图片覆盖整个容器，保持比例 */
+    background-size: contain; /* 背景图片自适应容器大小，保持比例且完整显示 */
     background-attachment: fixed; /* 背景图片在页面滚动时固定在视口 */
     height: 100vh; /* 高度设置为视口高度的100% */
     width: 100vw; /* 宽度设置为视口宽度的100% */
@@ -61,4 +62,6 @@ body, html {
 }
 
 /* 描述文本悬浮时颜色高亮 */
-.description:
+.description:hover p {
+    color: #fff; /* 鼠标悬浮时文本颜色变为白色 */
+}
