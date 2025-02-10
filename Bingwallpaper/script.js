@@ -1,84 +1,108 @@
-/* 全局样式，应用于整个网页 */
-body,
-html {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    font-family: '楷体', SimSun, 'Times New Roman', Times, serif;
-    overflow: hidden;
-    background-color: #000;
+// 函数：更新页面内容
+function updatePageContent(data) {
+    const showText = data.imgshow || '无描述';
+    const titleText = data.imgtitle || '无标题';
+    const titleElement = document.getElementById('image-title');
+    const copyrightElement = document.getElementById('image-copyright');
+    const storyElement = document.getElementById('image-story');
+
+    if (titleElement) {
+        titleElement.innerText = `${showText} | ${titleText}`;
+    } else {
+        console.error('未找到 image-title 元素');
+    }
+
+    if (copyrightElement) {
+        copyrightElement.innerText = data.imgcopyright || '无版权信息';
+    } else {
+        console.error('未找到 image-copyright 元素');
+    }
+
+    if (storyElement) {
+        storyElement.innerHTML = data.imgdetail || '无故事内容';
+    } else {
+        console.error('未找到 image-story 元素');
+    }
 }
 
-/* 背景图片容器样式 */
-.background-image {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover; /* 修改为 cover */
-    background-attachment: fixed;
-    height: 100vh;
-    width: 100vw;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: -1;
+// 函数：处理API错误
+function handleError(error) {
+    console.error('Error:', error);
+    const titleElement = document.getElementById('image-title');
+    const copyrightElement = document.getElementById('image-copyright');
+    const storyElement = document.getElementById('image-story');
+
+    if (titleElement) {
+        titleElement.innerText = '加载失败';
+    }
+
+    if (copyrightElement) {
+        copyrightElement.innerText = '加载失败';
+    }
+
+    if (storyElement) {
+        storyElement.innerText = '加载失败';
+    }
 }
 
-/* 描述容器样式 */
-.description {
-    position: fixed;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80%;
-    max-width: 100%;
-    padding: 10px;
-    background-color: rgba(0, 0, 0, 0.5);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    z-index: 1000;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+// 获取图片信息并更新页面
+function fetchImageData() {
+    const today = new Date();
+    const year = today.getUTCFullYear();
+    const month = String(today.getUTCMonth() + 1).padStart(2, '0');
+    const day = String(today.getUTCDate()).padStart(2, '0');
+    const dateString = `${year}${month}${day}`;
+
+    fetch(`https://bing.ee123.net/img/?date=${dateString}&type=json`)
+      .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+      .then(data => {
+            console.log('API响应数据:', data);
+
+            if (!data.imgurl) {
+                console.error('API 响应中缺少 imgurl 字段');
+                return;
+            }
+
+            const backgroundImageDiv = document.querySelector('.background-image');
+            if (backgroundImageDiv) {
+                console.log('即将设置的背景图片 URL:', data.imgurl);
+                backgroundImageDiv.style.backgroundImage = `url('${data.imgurl}')`;
+            } else {
+                console.error('未找到 .background-image 元素');
+            }
+
+            // 更新页面中的内容
+            updatePageContent(data);
+        })
+      .catch(handleError);
 }
 
-/* 描述容器悬浮时放大5% */
-.description:hover {
-    transform: translateX(-50%) scale(1.05);
-    box-shadow: 0 0 20px 5px rgba(255, 215, 0, 0.8);
+// 初始化加载数据
+fetchImageData();
+
+// 检测是否为移动设备
+function isMobileDevice() {
+    return (typeof window.orientation!== 'undefined') || (navigator.userAgent.indexOf('IEMobile')!== -1);
 }
 
-/* 描述容器中的段落样式 */
-.description p {
-    color: #dcdcdc;
-    margin: 0;
-    transition: color 0.3s ease;
+// 检测屏幕方向
+function checkOrientation() {
+    const warning = document.getElementById('orientation-warning');
+    if (isMobileDevice() && window.innerWidth < window.innerHeight) {
+        warning.style.display = 'flex';
+    } else {
+        warning.style.display = 'none';
+    }
 }
 
-/* 标题样式 */
-.title {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
+// 监听屏幕方向变化
+window.addEventListener('orientationchange', checkOrientation);
+window.addEventListener('resize', checkOrientation);
 
-/* 描述文本样式 */
-.sub p {
-    font-size: 16px;
-}
-
-/* 描述文本悬浮时颜色高亮 */
-.description:hover p {
-    color: #fff;
-}
-
-/* 横屏提示样式 */
-#orientation-warning {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-}
+// 页面加载时检查一次
+checkOrientation();
