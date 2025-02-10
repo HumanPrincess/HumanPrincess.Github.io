@@ -5,6 +5,7 @@ body, html {
     padding: 0; /* 移除浏览器默认的内边距 */
     font-family: '楷体', SimSun, 'Times New Roman', Times, serif; /* 设置字体 */
     overflow: hidden; /* 隐藏滚动条 */
+    background-color: #000; /* 设置背景颜色为黑色 */
 }
 
 /* 背景图片容器样式 */
