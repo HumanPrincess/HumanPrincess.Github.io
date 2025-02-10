@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8"> <!-- 设置文档字符编码为UTF-8 -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 使页面在移动设备上适配屏幕宽度 -->
-    <title>bing-wallpaper</title> <!-- 设置网页标题 -->
-    <link rel="stylesheet" href="styles.css"> <!-- 引入CSS文件 -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bing-wallpaper</title>
+    <link rel="stylesheet" href="styles.css">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
 </head>
+
 <body>
     <!-- 背景图片容器 -->
     <div class="background-image" id="background-image"></div>
@@ -19,11 +23,17 @@
         </span>
     </div>
 
+    <!-- 横屏提示 -->
+    <div id="orientation-warning" style="display: none;">
+        <p>为了获得更好的体验，请将设备横屏。</p>
+    </div>
+
     <!-- 页面其他内容容器 -->
     <div class="content-wrapper">
         <p></p>
     </div>
 
-    <script src="script.js"></script> <!-- 引入JavaScript文件 -->
+    <script src="script.js"></script>
 </body>
+
 </html>
