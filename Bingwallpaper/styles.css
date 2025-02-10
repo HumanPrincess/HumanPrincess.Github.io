@@ -1,68 +1,84 @@
 /* 全局样式，应用于整个网页 */
-body, html {
-    height: 100%; /* 设置body和html的高度为100%，以确保背景图片覆盖整个视口 */
-    margin: 0; /* 移除浏览器默认的外边距 */
-    padding: 0; /* 移除浏览器默认的内边距 */
-    font-family: '楷体', SimSun, 'Times New Roman', Times, serif; /* 设置字体 */
-    overflow: hidden; /* 隐藏滚动条 */
-    background-color: #000; /* 设置背景颜色为黑色 */
+body,
+html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: '楷体', SimSun, 'Times New Roman', Times, serif;
+    overflow: hidden;
+    background-color: #000;
 }
 
 /* 背景图片容器样式 */
 .background-image {
-    background-position: center; /* 背景图片在容器中居中显示 */
-    background-repeat: no-repeat; /* 背景图片不重复显示 */
-    background-size: contain; /* 背景图片自适应容器大小，保持比例且完整显示 */
-    background-attachment: fixed; /* 背景图片在页面滚动时固定在视口 */
-    height: 100vh; /* 高度设置为视口高度的100% */
-    width: 100vw; /* 宽度设置为视口宽度的100% */
-    position: fixed; /* 固定定位，确保背景图片覆盖整个页面 */
-    top: 0; /* 顶部距离视口顶部0px */
-    left: 0; /* 左侧距离视口左边0px */
-    z-index: -1; /* 背景图片的层级低于其他内容 */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-attachment: fixed;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
 }
 
 /* 描述容器样式 */
 .description {
-    position: fixed; /* 固定定位，确保描述层在视口的固定位置 */
-    bottom: 0; /* 底部距离视口底部0px */
-    left: 50%; /* 水平居中对齐，通过左侧50%位置实现 */
-    transform: translateX(-50%); /* 使用CSS transform水平居中对齐 */
-    width: 80%; /* 描述容器宽度设置为视口宽度的80% */
-    max-width: 100%; /* 最大宽度为视口宽度 */
-    padding: 10px; /* 描述容器的内边距 */
-    background-color: rgba(0, 0, 0, 0.5); /* 半透明黑色背景，增加文本的可读性 */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* 描述容器的阴影效果 */
-    z-index: 1000; /* 描述容器的层级高于其他内容 */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* 描述容器的放大动画和平滑阴影过渡 */
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    max-width: 100%;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* 描述容器悬浮时放大5% */
 .description:hover {
-    transform: translateX(-50%) scale(1.05); /* 鼠标悬浮时放大5% */
-    box-shadow: 0 0 20px 5px rgba(255, 215, 0, 0.8); /* 悬浮时的金色光晕效果 */
+    transform: translateX(-50%) scale(1.05);
+    box-shadow: 0 0 20px 5px rgba(255, 215, 0, 0.8);
 }
 
 /* 描述容器中的段落样式 */
 .description p {
-    color: #dcdcdc; /* 默认文本颜色为灰白色 */
-    margin: 0; /* 移除段落的外边距 */
-    transition: color 0.3s ease; /* 文本颜色的过渡效果 */
+    color: #dcdcdc;
+    margin: 0;
+    transition: color 0.3s ease;
 }
 
 /* 标题样式 */
 .title {
-    font-size: 24px; /* 设置标题字体大小为24px */
-    font-weight: bold; /* 设置标题字体加粗 */
-    margin-bottom: 10px; /* 标题底部的外边距为10px */
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
 }
 
 /* 描述文本样式 */
 .sub p {
-    font-size: 16px; /* 设置描述文本的字体大小为16px */
+    font-size: 16px;
 }
 
 /* 描述文本悬浮时颜色高亮 */
 .description:hover p {
-    color: #fff; /* 鼠标悬浮时文本颜色变为白色 */
+    color: #fff;
+}
+
+/* 横屏提示样式 */
+#orientation-warning {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
 }
