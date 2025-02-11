@@ -1,39 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>bing-wallpaper</title>
+    <title>Bing Wallpaper</title>
     <link rel="stylesheet" href="styles.css">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="mobile-web-app-capable" content="yes">
 </head>
-
 <body>
     <!-- 背景图片容器 -->
     <div class="background-image" id="background-image"></div>
 
     <!-- 描述容器 -->
-    <div class="description">
-        <p class="title" id="image-title">加载中...</p>
-        <span class="sub">
+    <section class="description">
+        <h1 class="title" id="image-title">加载中...</h1>
+        <div class="sub">
             <p id="image-copyright">加载中...</p>
             <p id="image-story">加载中...</p>
-        </span>
-    </div>
-
-    <!-- 横屏提示 -->
-    <div id="orientation-warning" style="display: none;">
-        <p>为了获得更好的体验，请将设备横屏。</p>
-    </div>
+        </div>
+    </section>
 
     <!-- 页面其他内容容器 -->
-    <div class="content-wrapper">
-        <p></p>
+    <main class="content-wrapper">
+        <p>这里是其他内容...</p>
+    </main>
+
+    <!-- 加载提示 -->
+    <div id="loading" class="loading">
+        <p>正在加载，请稍候...</p>
     </div>
 
     <script src="script.js"></script>
 </body>
-
 </html>
