@@ -33,16 +33,35 @@ function handleError(error) {
     const storyElement = document.getElementById('image-story');
 
     if (titleElement) {
-        titleElement.innerText = '加载失败';
+        titleElement.innerText = '加载失败，请检查网络连接或链接的合法性';
     }
 
     if (copyrightElement) {
-        copyrightElement.innerText = '加载失败';
+        copyrightElement.innerText = '加载失败，请检查网络连接或链接的合法性';
     }
 
     if (storyElement) {
-        storyElement.innerText = '加载失败';
+        storyElement.innerText = '加载失败，请检查网络连接或链接的合法性';
     }
+}
+
+// 带超时的 fetch 函数
+function fetchWithTimeout(url, timeout = 5000) {
+    return new Promise((resolve, reject) => {
+        const timeoutId = setTimeout(() => {
+            reject(new Error('请求超时'));
+        }, timeout);
+
+        fetch(url)
+            .then(response => {
+                clearTimeout(timeoutId);
+                resolve(response);
+            })
+            .catch(error => {
+                clearTimeout(timeoutId);
+                reject(error);
+            });
+    });
 }
 
 // 获取图片信息并更新页面
@@ -53,14 +72,17 @@ function fetchImageData() {
     const day = String(today.getUTCDate()).padStart(2, '0');
     const dateString = `${year}${month}${day}`;
 
-    fetch(`https://bing.ee123.net/img/?date=${dateString}&type=json`)
-      .then(response => {
+    const imageUrl = `https://bing.ee123.net/img/?date=${dateString}&type=json`;
+    console.log('请求的 URL:', imageUrl);
+
+    fetchWithTimeout(imageUrl)
+        .then(response => {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             return response.json();
         })
-      .then(data => {
+        .then(data => {
             console.log('API响应数据:', data);
 
             if (!data.imgurl) {
@@ -79,7 +101,7 @@ function fetchImageData() {
             // 更新页面中的内容
             updatePageContent(data);
         })
-      .catch(handleError);
+        .catch(handleError);
 }
 
 // 初始化加载数据
@@ -87,7 +109,7 @@ fetchImageData();
 
 // 检测是否为移动设备
 function isMobileDevice() {
-    return (typeof window.orientation!== 'undefined') || (navigator.userAgent.indexOf('IEMobile')!== -1);
+    return (typeof window.orientation !== 'undefined') || (navigator.userAgent.indexOf('IEMobile') !== -1);
 }
 
 // 检测屏幕方向
