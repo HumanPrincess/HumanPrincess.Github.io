@@ -1,37 +1,23 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- 设置文档的字符编码为UTF-8，确保能正确显示各种字符 -->
     <meta charset="UTF-8">
-    <!-- 配置视口，使页面在不同设备上能自适应显示 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- 页面标题，显示在浏览器标签上 -->
     <title>🌌每日一图</title>
-    <!-- 引入外部样式表，用于定义页面的样式 -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- 背景图片容器，用于显示背景图片 -->
     <div class="background-image" id="background-image"></div>
-
-    <!-- 描述容器，包含图片的标题、版权信息等描述内容 -->
     <section class="description">
-        <!-- 图片标题，初始显示加载中 -->
         <h1 class="title" id="image-title">加载中...</h1>
         <div class="sub">
-            <!-- 图片版权信息，初始显示加载中 -->
             <p id="image-copyright">加载中...</p>
-            <!-- 图片故事内容，初始显示加载中 -->
             <p id="image-story">加载中...</p>
         </div>
     </section>
-
-    <!-- 加载提示，当页面加载时显示提示信息 -->
     <div id="loading" class="loading">
         <p>正在加载，请稍候...</p>
     </div>
-
-    <!-- 引入外部脚本文件，用于实现页面的交互逻辑 -->
     <script src="script.js"></script>
 </body>
 </html>
