@@ -2,6 +2,9 @@
 document.addEventListener("DOMContentLoaded", function () {
     checkOrientation();
     window.addEventListener('orientationchange', checkOrientation);
+    if (isWechatBrowser()) {
+        tryToRotateScreen();
+    }
     fetchImageData();
 });
 
@@ -19,6 +22,19 @@ function checkOrientation() {
 
 function isMobileDevice() {
     return (typeof window.orientation!== 'undefined') || (navigator.userAgent.indexOf('IEMobile')!== -1);
+}
+
+function isWechatBrowser() {
+    const ua = navigator.userAgent.toLowerCase();
+    return ua.match(/MicroMessenger/i) === 'micromessenger';
+}
+
+function tryToRotateScreen() {
+    if (screen.orientation && screen.orientation.lock) {
+        screen.orientation.lock('landscape').catch((error) => {
+            console.error('无法锁定屏幕方向:', error);
+        });
+    }
 }
 
 /**
