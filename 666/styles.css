@@ -80,14 +80,14 @@ body, html {
 
 /* 小屏幕设备媒体查询 */
 @media (max-width: 600px) {
-    .description {
+   .description {
         width: 90%;
         padding: 5px;
     }
-    .title {
+   .title {
         font-size: 18px;
     }
-    .sub p {
+   .sub p {
         font-size: 14px;
     }
 }
@@ -95,13 +95,24 @@ body, html {
 /* 横屏样式 */
 @media screen and (orientation: landscape) and (max-width: 600px) {
     /* 可根据需要添加横屏时的样式调整 */
-    .description {
+   .description {
         width: 70%;
     }
-    .title {
+   .title {
         font-size: 16px;
     }
-    .sub p {
+   .sub p {
         font-size: 12px;
     }
-}    
+}
+
+/* 页面旋转样式 */
+.rotate-90 {
+    transform: rotate(90deg);
+    transform-origin: top left;
+    width: 100vh;
+    height: 100vw;
+    position: absolute;
+    left: 0;
+    top: 0;
+}

@@ -1,40 +1,14 @@
 ﻿// 当DOM内容加载完成后，执行fetchImageData函数
 document.addEventListener("DOMContentLoaded", function () {
-    checkOrientation();
-    window.addEventListener('orientationchange', checkOrientation);
     if (isWechatBrowser()) {
-        tryToRotateScreen();
+        document.body.classList.add('rotate-90');
     }
     fetchImageData();
 });
 
-function checkOrientation() {
-    if (isMobileDevice()) {
-        if (window.orientation === 90 || window.orientation === -90) {
-            // 横屏状态
-            document.body.classList.add('landscape');
-        } else {
-            // 竖屏状态
-            document.body.classList.remove('landscape');
-        }
-    }
-}
-
-function isMobileDevice() {
-    return (typeof window.orientation!== 'undefined') || (navigator.userAgent.indexOf('IEMobile')!== -1);
-}
-
 function isWechatBrowser() {
     const ua = navigator.userAgent.toLowerCase();
-    return ua.match(/MicroMessenger/i) === 'micromessenger';
-}
-
-function tryToRotateScreen() {
-    if (screen.orientation && screen.orientation.lock) {
-        screen.orientation.lock('landscape').catch((error) => {
-            console.error('无法锁定屏幕方向:', error);
-        });
-    }
+    return ua.match(/MicroMessenger/i) ==='micromessenger';
 }
 
 /**
@@ -82,13 +56,13 @@ function fetchImageData() {
     const imageUrl = `https://bing.ee123.net/img/?date=${dateString}&type=json`;
     console.log('请求的 URL:', imageUrl);
     fetch(imageUrl)
-      .then((response) => {
+       .then((response) => {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             return response.json();
         })
-      .then((data) => {
+       .then((data) => {
             console.log('API响应数据:', data);
             if (!data.imgurl) {
                 console.error('API 响应中缺少 imgurl 字段');
@@ -110,5 +84,5 @@ function fetchImageData() {
             }
             updatePageContent(data);
         })
-      .catch(handleError);
-}    
+       .catch(handleError);
+}
